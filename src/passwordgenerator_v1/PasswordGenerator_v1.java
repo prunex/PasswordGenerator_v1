@@ -5,6 +5,10 @@
  */
 package passwordgenerator_v1;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 /**
@@ -41,8 +45,24 @@ public class PasswordGenerator_v1 {
             for (int j = 0; j < passLength; j++) {
                 passGenerated += passLimit.charAt(random.nextInt(passLimit.length()));
             }
-            System.out.println(passGenerated);
+            System.out.println(passGenerated + " -> " + getSHA254(passGenerated));
         }
     }
+
+    private static String getSHA254(String input) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String toReturn = null;
+	try {
+	    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	    digest.reset();
+	    digest.update(input.getBytes("utf8"));
+	    toReturn = String.format("%064x", new BigInteger(1, digest.digest()));
+	} catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+	}
+	
+	return toReturn;
+    }
+
+    
 
 }
