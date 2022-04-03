@@ -12,7 +12,6 @@ import java.util.Random;
  * @author Prunex
  */
 public class PasswordGenerator_v1 {
-    // Personal token: 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
 
     /**
      * @param args the command line arguments
@@ -27,7 +26,9 @@ public class PasswordGenerator_v1 {
         String specialChar = ",.-";
         String passLimit = upperCase + lowerCase + numberCase + specialChar;
 
-        int passQuatity = 10;
+        // Input the password quantity
+        int passQuatity = 5;
+        // Input the password length
         int passLength = 8;
 
         System.out.println("Password to generate: " + passQuatity);
